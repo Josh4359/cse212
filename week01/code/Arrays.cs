@@ -39,11 +39,10 @@ public static class Arrays
         // 1. cache the initial list to an array
         var cache = data.ToArray();
         
-        
         for (int i = 0; i < data.Count; i++)
         {
             // 2. add the amount to the index
-            int index = i + amount;
+            int index = i - amount;
 
             // 3. wrap the index around the length of the list
             index = ((index % data.Count) + data.Count) % data.Count;

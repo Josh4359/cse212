@@ -1,6 +1,6 @@
 ﻿public class PriorityQueue
 {
-    private List<PriorityItem> _queue = new();
+    public List<PriorityItem> _queue = new();
 
     /// <summary>
     /// Add a new value to the queue with an associated priority.  The
@@ -32,6 +32,7 @@
 
         // Remove and return the item with the highest priority
         var value = _queue[highPriorityIndex].Value;
+        _queue.RemoveAt(highPriorityIndex);
         return value;
     }
 
@@ -43,7 +44,7 @@
     }
 }
 
-internal class PriorityItem
+public class PriorityItem
 {
     internal string Value { get; set; }
     internal int Priority { get; set; }

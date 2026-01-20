@@ -22,7 +22,18 @@ public static class SetsAndMaps
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        HashSet<string> setA = new(), setB = new();
+
+        foreach (string x in words)
+        {
+            string r = string.Concat(x.Reverse());
+            if (setA.Contains(r))
+                setB.Add($"{r} & {x}");
+            else
+                setA.Add((x));
+        }
+
+        return setB.ToArray();
     }
 
     /// <summary>
@@ -43,9 +54,19 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+            string key = fields[3];
+            SetOrAdd(degrees, key);
         }
 
         return degrees;
+    }
+
+    static void SetOrAdd<T>(Dictionary<T, int> dict, T key)
+    {
+        if (dict.ContainsKey(key))
+            dict[key]++;
+        else
+            dict[key] = 1;
     }
 
     /// <summary>
@@ -67,7 +88,32 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        ProcessAnagram(ref word1);
+        ProcessAnagram(ref word2);
+
+        if (word1.Length != word2.Length) return false;
+
+        Dictionary<char, int> mapA = new(), mapB = new();
+        for (int i = 0; i < word1.Length; i++)
+        {
+            SetOrAdd(mapA, word1[i]);
+            SetOrAdd(mapB, word2[i]);
+        }
+
+        if (mapA.Count != mapB.Count) return false;
+
+        foreach (char x in mapA.Keys)
+        {
+            if (!mapB.TryGetValue(x, out int value)) return false;
+            if (value != mapA[x]) return false;
+        }
+
+        return true;
+    }
+
+    static void ProcessAnagram(ref string word)
+    {
+        word = string.Concat(word.ToLower().Where(c => !char.IsWhiteSpace(c)));
     }
 
     /// <summary>
@@ -101,6 +147,11 @@ public static class SetsAndMaps
         // on those classes so that the call to Deserialize above works properly.
         // 2. Add code below to create a string out each place a earthquake has happened today and its magitude.
         // 3. Return an array of these string descriptions.
-        return [];
+        
+        Console.WriteLine("FJDSKLFDSJKLDSJLKSDJ");
+        Console.WriteLine(featureCollection.features.Length);
+        return featureCollection.features
+            .Select(x => $"{x.properties.place} - Mag {x.properties.mag}")
+            .ToArray();
     }
 }

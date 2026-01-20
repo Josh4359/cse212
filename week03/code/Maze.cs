@@ -1,3 +1,5 @@
+using System.Numerics;
+
 /// <summary>
 /// Defines a maze using a dictionary. The dictionary is provided by the
 /// user when the Maze object is created. The dictionary will contain the
@@ -33,6 +35,7 @@ public class Maze
     public void MoveLeft()
     {
         // FILL IN CODE
+        Move(0);
     }
 
     /// <summary>
@@ -42,6 +45,7 @@ public class Maze
     public void MoveRight()
     {
         // FILL IN CODE
+        Move(1);
     }
 
     /// <summary>
@@ -51,6 +55,7 @@ public class Maze
     public void MoveUp()
     {
         // FILL IN CODE
+        Move(2);
     }
 
     /// <summary>
@@ -60,6 +65,29 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
+        Move(3);
+    }
+
+    ValueTuple<int, int>[] directions =
+    [
+        new(-1, 0),
+        new(1, 0),
+        new(0, -1),
+        new(0, 1)
+    ];
+
+    public void Move(int directionIndex)
+    {
+        ValueTuple<int, int> current = new(_currX, _currY);
+        if (_mazeMap.ContainsKey(current) && !_mazeMap[current][directionIndex])
+            throw new InvalidOperationException("Can't go that way!");
+
+        ValueTuple<int, int> velocity = directions[directionIndex];
+        ValueTuple<int, int> goal = new(current.Item1 + velocity.Item1,
+                                        current.Item2 + velocity.Item2);
+        
+        _currX = goal.Item1;
+        _currY = goal.Item2;
     }
 
     public string GetStatus()

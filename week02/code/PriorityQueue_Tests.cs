@@ -36,7 +36,9 @@ public class PriorityQueueTests
         priorityQueue.Enqueue("a", 0);
         priorityQueue.Enqueue("b", 1);
         priorityQueue.Enqueue("c", 0);
+        priorityQueue.Enqueue("d", 1);
         Assert.AreEqual("b", priorityQueue.Dequeue());
+        Assert.AreEqual("d", priorityQueue.Dequeue());
         
         if (priorityQueue._queue.Count == expected.Count)
             for (int i = 0; i < expected.Count; i++)

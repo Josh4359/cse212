@@ -1,0 +1,11 @@
+1. Describe how you would write a function to find the intersection of two sets. Your solution should NOT use the built-in intersection method.
+- To write my own set intersection method, I would simply create a new set only with any items that exist in both of the given sets.
+- For example, I could loop through the contents of Set A, check if the given item is contained in Set B, and if so, append it to the new set. To minimize workload, we could ensure Set A is the smaller of the sets as that should ensure all possible intersection candidates are considered without wasting time on elements that are in only one of the sets.
+- This should be O(n), as the workload scales linearly with the size of the sets, and all the functions we are using should be O(1).
+- Some test cases include: 1. intersecting 2 sets with no items in common and checking that the resulting set is empty, 2. intersecting 2 sets with all items in common and ensuring the resulting set is equal to both sets, and 3. intersecting 2 sets where each set has some common items and some unique items and ensure the resulting set consists only of the common items.
+
+2. Describe how you would write a function to find the union of two sets. Your solution should NOT use the built-in union method.
+- To write my own set union method, I would output a new set with all items from the input sets.
+- For example, I could copy the larger of the 2 into a new set, then loop through the contents of the other and append them to the new set.
+- This should be O(n), as the workload scales linearly with the size of the sets.
+- To test this, I might try the same test cases as for the intersection method, but instead check that all items are included in the output set, regardless of whether or not they are contained in both input sets.

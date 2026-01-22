@@ -29,5 +29,19 @@
     /// <param name="numbers">array of integers</param>
     private static void DisplaySumPairs(int[] numbers) {
         // TODO Problem 2 - This should print pairs of numbers in the given array
+        HashSet<ValueTuple<int, int>> set = new();
+        foreach (int n in numbers)
+        {
+            int a = n;
+            int b = 10-n;
+            if (a == b) continue;
+            if (!numbers.Contains(b)) continue;
+
+            ValueTuple<int, int> pair = new(Math.Max(a, b), Math.Min(a, b));
+            if (set.Contains(pair)) continue;
+            
+            set.Add(pair);
+            Console.WriteLine(pair);
+        }
     }
 }

@@ -142,25 +142,6 @@ public class LinkedList : IEnumerable<int>
             }
             node = node.Next;
         }
-        // while (node.Next != null && node.Data != value)
-        //     node = node.Next;
-        // if (node.Data == value)
-        //     if (node == _head)
-        //     {
-        //         RemoveHead();
-        //         return;
-        //     }
-        //     if (node == _tail)
-        //     {
-        //         RemoveHead();
-        //         return;
-        //     }
-        //     if (node.Prev != null)
-        //         node.Prev.Next = node.Next;
-        //     if (node.Next != null)
-        //         node.Next.Prev = node.Prev;
-        //     node.Prev = null;
-        //     node.Next = null;
     }
 
     /// <summary>

@@ -1,0 +1,39 @@
+1. Explain how you would use a linked list internally to implement a Stack. Make sure to explain the way you would use the linked list AND the time complexity associated with each of the following operations:
+
+1.1 Push
+- Create a new node with the given value, set LinkedList.last.next to the new node (or set LinkedList.first if the list is empty), set LinkedList.last to the new node.
+- Time complexity should be O(1) because there is no need to iterate through the values of the list.
+
+1.2 Pop
+- Cache LinkedList.last, set LinkedList.last to LinkedList.last.prev and set the new LinkedList.last.next to null (if applicable; otherwise set LinkedList.first to null as well), then return the original cached LinkedList.last.
+- Time complexity should be O(1) because there is no need to iterate through the values of the list.
+
+1.3 GetTop
+- Simply return LinkedList.last without modifying the list.
+- Time complexity should be O(1) because there is no need to iterate through the values of the list.
+
+1.4 IsEmpty
+- Return true if LinkedList.first and/or LinkedList.last are null. If only one is null, the integrity of the list is broken.
+- Time complexity should be O(1) because there is no need to iterate through the values of the list.
+
+
+2. Explain how you would use a linked list internally to implement a Queue. Make sure to explain the way you would use the linked list AND the time complexity associated with each of the following operations:
+
+2.1 Enqueue
+- Identical to Stack.Push
+- Create a new node with the given value, set LinkedList.last.next to the new node (or set LinkedList.first if the list is empty), set LinkedList.last to the new node.
+- Time complexity should be O(1) because there is no need to iterate through the values of the list.
+
+2.2 Dequeue
+- Inverse of Stack.Pop
+- Cache LinkedList.first, set LinkedList.first to LinkedList.first.next and set the new LinkedList.first.prev to null (if applicable; otherwise set LinkedList.last to null as well), then return the original cached LinkedList.first.
+- Time complexity should be O(1) because there is no need to iterate through the values of the list.
+
+2.3 Size
+- Starting with the first node, check the Node.next of each given node until Node.next is null, counting the number of valid nodes.
+- Time complexity should be O(n) because the complexity of the function scales linearly with the size of the list.
+
+2.4 IsEmpty
+- Identical to Stack.IsEmpty
+- Return true if LinkedList.first and/or LinkedList.last are null. If only one is null, the integrity of the list is broken.
+- Time complexity should be O(1) because there is no need to iterate through the values of the list.

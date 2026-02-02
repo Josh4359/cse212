@@ -1,0 +1,3 @@
+1. What are two potential pitfalls of using recursion? How could you overcome these challenges (either by using an alternative technique or by doing something to help the recursion)?
+- One potential pitfall of recursion is code structure. Recursion often makes code much more difficult to understand. A more readable method of executing code recursively is to use a loop, such as for, foreach, while, etc.
+- Another potential pitfall of recursion is the stack overflow. Similar to running a while(true) loop without breaking, some recursive functions might never end under certain conditions. This problem can be accounted for with a finite iterator, such as an integer that starts at the length of an array and counts down to 0, at which point the recursion ends.

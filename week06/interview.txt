@@ -1,0 +1,2 @@
+1. Describe a recursive function that accepts a valid Binary Tree and determines if it is a Binary Search Tree.
+- To determine if a Binary Tree is a Binary Search tree, the function would check that its left node is less than and its right node is greater than itself (if applicable) in each recursion. It then executes the same function on its child nodes to continue the recursion (again, if applicable). The base case would be both left and right nodes being null.
